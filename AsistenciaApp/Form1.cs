@@ -246,6 +246,13 @@ namespace AsistenciaApp.Forms
 
             lblTotal.Text = $"Total registros: {data.Count}";
 
+            // Contadores de asistencia
+            int presentes = data.Count(e => e.Present);
+            int faltaron = data.Count(e => !e.Present && !e.Late);
+
+            lblPresentes.Text = $"Presentes: {presentes}";
+            lblFaltaron.Text = $"Faltaron: {faltaron}";
+
             // Actualizar ComboBox nombres
             var nombres = attendanceService.GetRecords().Select(e => e.Name).Distinct().ToList();
 

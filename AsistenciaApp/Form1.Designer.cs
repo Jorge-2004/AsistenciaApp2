@@ -200,6 +200,21 @@
             lblTotal.TabIndex = 17;
             lblTotal.Text = "Total registros: 0";
             // 
+
+            this.lblPresentes = new System.Windows.Forms.Label();
+            this.lblPresentes.Location = new System.Drawing.Point(20, 490); // Ajusta ubicación si lo deseas
+            this.lblPresentes.Size = new System.Drawing.Size(200, 23);
+            this.lblPresentes.Text = "Presentes: 0";
+
+            this.lblFaltaron = new System.Windows.Forms.Label();
+            this.lblFaltaron.Location = new System.Drawing.Point(250, 490); // Ajusta ubicación si lo deseas
+            this.lblFaltaron.Size = new System.Drawing.Size(200, 23);
+            this.lblFaltaron.Text = "Faltaron: 0";
+
+            this.Controls.Add(this.lblPresentes);
+            this.Controls.Add(this.lblFaltaron);
+
+
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
@@ -304,6 +319,8 @@
         private System.Windows.Forms.CheckBox chkSoloFaltaron;
         private System.Windows.Forms.DataGridView dgvRegistros;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label lblPresentes;
+        private System.Windows.Forms.Label lblFaltaron;
         private PictureBox pictureBox2;
         private System.Windows.Forms.Button btnReporteTXT;
         private System.Windows.Forms.Button btnReporteCSV;
