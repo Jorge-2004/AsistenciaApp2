@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using AsistenciaApp.models;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
+
 
 namespace AsistenciaApp.Forms
 {
@@ -25,9 +27,15 @@ namespace AsistenciaApp.Forms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDNI.Text))
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
-                MessageBox.Show("Debe completar al menos el nombre y el DNI.");
+                MessageBox.Show("Debe ingresar el nombre.");
+                return;
+            }
+
+            if (txtDNI.Text.Length != 8 || !int.TryParse(txtDNI.Text, out _))
+            {
+                MessageBox.Show("El DNI debe tener exactamente 8 dígitos numéricos.");
                 return;
             }
 
