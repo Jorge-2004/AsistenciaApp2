@@ -25,6 +25,20 @@ namespace AsistenciaApp.Forms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+
+            // Validación: no permitir el mismo DNI para la misma fecha
+            var existentes = attendanceService.GetRecords();
+            bool existeMismoDNIHoy = existentes.Any(emp =>
+                emp.DNI == txtDNI.Text.Trim() &&
+                emp.Date.Date == dtpFecha.Value.Date);
+
+            if (existeMismoDNIHoy)
+            {
+                MessageBox.Show("Ya existe un registro con ese DNI en esta fecha.", "DNI duplicado por fecha", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDNI.Text))
             {
                 MessageBox.Show("Debe completar al menos el nombre y el DNI.");
