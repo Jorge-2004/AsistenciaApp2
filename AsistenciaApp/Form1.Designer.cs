@@ -36,6 +36,7 @@
             btnReporteTXT = new Button();
             btnReporteCSV = new Button();
             txtObservaciones = new TextBox();
+            btnUltimos = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvRegistros).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -237,11 +238,21 @@
             txtObservaciones.Size = new Size(300, 27);
             txtObservaciones.TabIndex = 0;
             // 
+            // btnUltimos
+            // 
+            btnUltimos.Location = new Point(973, 303);
+            btnUltimos.Name = "btnUltimos";
+            btnUltimos.Size = new Size(100, 30);
+            btnUltimos.TabIndex = 0;
+            btnUltimos.Text = "Últimos 10";
+            btnUltimos.Click += btnUltimos_Click;
+            // 
             // MainForm
             // 
             AutoSize = true;
             BackColor = SystemColors.Window;
             ClientSize = new Size(1329, 689);
+            Controls.Add(btnUltimos);
             Controls.Add(txtObservaciones);
             Controls.Add(btnReporteTXT);
             Controls.Add(btnReporteCSV);
@@ -286,6 +297,7 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnUltimos;
         private System.Windows.Forms.ComboBox cmbFiltroNombre;
         private System.Windows.Forms.CheckBox chkSoloPresentes;
         private System.Windows.Forms.CheckBox chkSoloTarde;

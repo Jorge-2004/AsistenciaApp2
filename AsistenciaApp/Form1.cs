@@ -182,6 +182,22 @@ namespace AsistenciaApp.Forms
             }
         }
 
+        private void btnUltimos_Click(object sender, EventArgs e)
+        {
+            var data = attendanceService.GetRecords()
+                .OrderByDescending(e => e.Date)
+                .Take(10)
+                .ToList();
+
+            dgvRegistros.DataSource = null;
+            dgvRegistros.DataSource = data;
+
+            lblTotal.Text = "Mostrando últimos 10 registros";
+
+            if (dgvRegistros.Columns.Contains("Observaciones"))
+                dgvRegistros.Columns["Observaciones"].HeaderText = "Observaciones";
+        }
+
 
         private void LimpiarCampos()
         {
