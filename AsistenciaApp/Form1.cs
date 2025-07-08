@@ -210,6 +210,7 @@ namespace AsistenciaApp.Forms
 
         private void ActualizarVista()
         {
+
             var data = attendanceService.GetRecords();
 
             // Filtro por nombre
@@ -230,6 +231,8 @@ namespace AsistenciaApp.Forms
 
             // Desconectar evento de selecci�n
             dgvRegistros.SelectionChanged -= dgvRegistros_SelectionChanged;
+            dgvRegistros.CellFormatting += dgvRegistros_CellFormatting;
+
 
             dgvRegistros.DataSource = null;
             dgvRegistros.DataSource = data;
@@ -356,6 +359,27 @@ namespace AsistenciaApp.Forms
                              $"❌ Faltaron: {faltaron}";
 
             MessageBox.Show(mensaje, "Resumen Diario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void dgvRegistros_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dgvRegistros.Rows[e.RowIndex].DataBoundItem is Empleados emp)
+            {
+                var row = dgvRegistros.Rows[e.RowIndex];
+
+                if (emp.Present)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightGreen;
+                }
+                else if (emp.Late)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Khaki;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightCoral;
+                }
+            }
         }
 
         private void buttonResumenDiario_Click(object sender, EventArgs e)
