@@ -37,6 +37,9 @@
             btnReporteCSV = new Button();
             txtObservaciones = new TextBox();
             btnUltimos = new Button();
+            lblPresentes = new Label();
+            lblFaltaron = new Label();
+            btnDuplicar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvRegistros).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -110,7 +113,7 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(505, 258);
+            btnAgregar.Location = new Point(484, 222);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(140, 30);
             btnAgregar.TabIndex = 8;
@@ -119,7 +122,7 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(797, 258);
+            btnModificar.Location = new Point(776, 222);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(142, 30);
             btnModificar.TabIndex = 9;
@@ -128,7 +131,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(651, 258);
+            btnEliminar.Location = new Point(630, 222);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(140, 30);
             btnEliminar.TabIndex = 10;
@@ -137,7 +140,7 @@
             // 
             // btnLimpiar
             // 
-            btnLimpiar.Location = new Point(959, 258);
+            btnLimpiar.Location = new Point(938, 222);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(142, 30);
             btnLimpiar.TabIndex = 11;
@@ -200,21 +203,6 @@
             lblTotal.TabIndex = 17;
             lblTotal.Text = "Total registros: 0";
             // 
-
-            this.lblPresentes = new System.Windows.Forms.Label();
-            this.lblPresentes.Location = new System.Drawing.Point(20, 490); // Ajusta ubicación si lo deseas
-            this.lblPresentes.Size = new System.Drawing.Size(200, 23);
-            this.lblPresentes.Text = "Presentes: 0";
-
-            this.lblFaltaron = new System.Windows.Forms.Label();
-            this.lblFaltaron.Location = new System.Drawing.Point(250, 490); // Ajusta ubicación si lo deseas
-            this.lblFaltaron.Size = new System.Drawing.Size(200, 23);
-            this.lblFaltaron.Text = "Faltaron: 0";
-
-            this.Controls.Add(this.lblPresentes);
-            this.Controls.Add(this.lblFaltaron);
-
-
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
@@ -226,14 +214,6 @@
             pictureBox2.TabStop = false;
             // 
             // btnReporteTXT
-
-            this.btnDuplicar = new System.Windows.Forms.Button();
-            this.btnDuplicar.Location = new System.Drawing.Point(850, 100); // Ajusta posición
-            this.btnDuplicar.Name = "btnDuplicar";
-            this.btnDuplicar.Size = new System.Drawing.Size(100, 30);
-            this.btnDuplicar.Text = "Duplicar";
-            this.btnDuplicar.Click += new System.EventHandler(this.btnDuplicar_Click);
-            this.Controls.Add(this.btnDuplicar);
             // 
             btnReporteTXT.Location = new Point(1164, 301);
             btnReporteTXT.Name = "btnReporteTXT";
@@ -270,11 +250,41 @@
             btnUltimos.Text = "Últimos 10";
             btnUltimos.Click += btnUltimos_Click;
             // 
+            // lblPresentes
+            // 
+            lblPresentes.Location = new Point(505, 265);
+            lblPresentes.Name = "lblPresentes";
+            lblPresentes.Size = new Size(200, 23);
+            lblPresentes.TabIndex = 0;
+            lblPresentes.Text = "Presentes: 0";
+            lblPresentes.Click += this.lblPresentes_Click;
+            // 
+            // lblFaltaron
+            // 
+            lblFaltaron.Location = new Point(735, 265);
+            lblFaltaron.Name = "lblFaltaron";
+            lblFaltaron.Size = new Size(200, 23);
+            lblFaltaron.TabIndex = 1;
+            lblFaltaron.Text = "Faltaron: 0";
+            lblFaltaron.Click += lblFaltaron_Click;
+            // 
+            // btnDuplicar
+            // 
+            btnDuplicar.Location = new Point(1095, 222);
+            btnDuplicar.Name = "btnDuplicar";
+            btnDuplicar.Size = new Size(100, 30);
+            btnDuplicar.TabIndex = 2;
+            btnDuplicar.Text = "Duplicar";
+            btnDuplicar.Click += btnDuplicar_Click;
+            // 
             // MainForm
             // 
             AutoSize = true;
             BackColor = SystemColors.Window;
             ClientSize = new Size(1329, 689);
+            Controls.Add(lblPresentes);
+            Controls.Add(lblFaltaron);
+            Controls.Add(btnDuplicar);
             Controls.Add(btnUltimos);
             Controls.Add(txtObservaciones);
             Controls.Add(btnReporteTXT);

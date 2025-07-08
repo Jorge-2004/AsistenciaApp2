@@ -30,7 +30,11 @@ namespace AsistenciaApp.Forms
                 MessageBox.Show("Debe completar al menos el nombre y el DNI.");
                 return;
             }
-
+            if (!txtDNI.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("El DNI solo debe contener números.", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var emp = new Empleados(
                 txtNombre.Text.Trim(),
                 dtpFecha.Value,
@@ -164,7 +168,7 @@ namespace AsistenciaApp.Forms
                                         $"{row.Cells["DNI"].Value};" +
                                         $"{row.Cells["Area"].Value};" +
                                         $"{row.Cells["Position"].Value};" +
-                                        $"{row.Cells["Email"].Value}"+
+                                        $"{row.Cells["Email"].Value}" +
                                          $"{row.Cells["Observacion"].Value}";
 
                                     sw.WriteLine(linea);
@@ -379,6 +383,11 @@ namespace AsistenciaApp.Forms
             {
                 chkPresente.Checked = false;
             }
+        }
+
+        private void lblFaltaron_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
