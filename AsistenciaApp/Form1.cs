@@ -198,6 +198,31 @@ namespace AsistenciaApp.Forms
                 dgvRegistros.Columns["Observaciones"].HeaderText = "Observaciones";
         }
 
+        private void btnDuplicar_Click(object sender, EventArgs e)
+        {
+            if (selectedId == -1)
+            {
+                MessageBox.Show("Seleccione un registro para duplicar.");
+                return;
+            }
+
+            var duplicado = new Empleados
+            {
+                Name = txtNombre.Text.Trim(),
+                DNI = txtDNI.Text.Trim(),
+                Area = txtArea.Text.Trim(),
+                Position = txtCargo.Text.Trim(),
+                Email = txtCorreo.Text.Trim(),
+                Date = DateTime.Now, // Se actualiza a la fecha actual
+                Present = chkPresente.Checked,
+                Late = chkTarde.Checked,
+                Observaciones = txtObservaciones.Text.Trim()
+            };
+
+            attendanceService.AddRecord(duplicado);
+            ActualizarVista();
+            MessageBox.Show("Registro duplicado con la fecha actual.");
+        }
 
         private void LimpiarCampos()
         {

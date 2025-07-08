@@ -226,6 +226,14 @@
             pictureBox2.TabStop = false;
             // 
             // btnReporteTXT
+
+            this.btnDuplicar = new System.Windows.Forms.Button();
+            this.btnDuplicar.Location = new System.Drawing.Point(850, 100); // Ajusta posición
+            this.btnDuplicar.Name = "btnDuplicar";
+            this.btnDuplicar.Size = new System.Drawing.Size(100, 30);
+            this.btnDuplicar.Text = "Duplicar";
+            this.btnDuplicar.Click += new System.EventHandler(this.btnDuplicar_Click);
+            this.Controls.Add(this.btnDuplicar);
             // 
             btnReporteTXT.Location = new Point(1164, 301);
             btnReporteTXT.Name = "btnReporteTXT";
@@ -313,6 +321,7 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnUltimos;
+        private System.Windows.Forms.Button btnDuplicar;
         private System.Windows.Forms.ComboBox cmbFiltroNombre;
         private System.Windows.Forms.CheckBox chkSoloPresentes;
         private System.Windows.Forms.CheckBox chkSoloTarde;
