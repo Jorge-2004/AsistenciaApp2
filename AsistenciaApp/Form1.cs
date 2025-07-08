@@ -325,5 +325,38 @@ namespace AsistenciaApp.Forms
                 chkPresente.Checked = false;
             }
         }
+
+        private void FiltrarRegistros()
+        {
+            CurrencyManager currencyManager = (CurrencyManager)BindingContext[dgvRegistros.DataSource];
+            currencyManager.SuspendBinding();  // 🚫 Suspende administración temporal
+
+            string filtro = txtBuscar.Text.Trim().ToLower();
+
+            foreach (DataGridViewRow fila in dgvRegistros.Rows)
+            {
+                if (fila.IsNewRow) continue;
+
+                string dni = fila.Cells["DNI"].Value?.ToString().ToLower();
+                string nombre = fila.Cells["Name"].Value?.ToString().ToLower();
+
+                bool coincide = dni.Contains(filtro) || nombre.Contains(filtro);
+                fila.Visible = coincide;
+            }
+
+            currencyManager.ResumeBinding();  // ✅ Reactiva administración
+        }
+
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            txtBuscar.Text = "";
+            FiltrarRegistros();
+        }
+
+        private void txtBuscar_TextChanged_1(object sender, EventArgs e)
+        {
+            FiltrarRegistros();
+        }
     }
 }
