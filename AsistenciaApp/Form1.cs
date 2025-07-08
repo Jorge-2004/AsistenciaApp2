@@ -59,7 +59,7 @@ namespace AsistenciaApp.Forms
         {
             if (selectedId == -1)
             {
-                MessageBox.Show("Seleccione un registro para modificar.");
+                MessageBox.Show("Seleccione un registro para modificar la caja de datos.");
                 return;
             }
 
@@ -85,7 +85,7 @@ namespace AsistenciaApp.Forms
         {
             if (selectedId == -1)
             {
-                MessageBox.Show("Seleccione un registro para eliminar.");
+                MessageBox.Show("Elimine un registro de la caja de datos.");
                 return;
             }
 
