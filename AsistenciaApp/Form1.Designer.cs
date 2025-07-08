@@ -35,6 +35,10 @@
             pictureBox2 = new PictureBox();
             btnReporteTXT = new Button();
             btnReporteCSV = new Button();
+            label1 = new Label();
+            txtBuscar = new TextBox();
+            btnBorrar = new Button();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)dgvRegistros).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -44,7 +48,7 @@
             txtNombre.Location = new Point(12, 203);
             txtNombre.Name = "txtNombre";
             txtNombre.PlaceholderText = "Nombre";
-            txtNombre.Size = new Size(311, 27);
+            txtNombre.Size = new Size(311, 23);
             txtNombre.TabIndex = 0;
             // 
             // txtDNI
@@ -52,7 +56,7 @@
             txtDNI.Location = new Point(329, 203);
             txtDNI.Name = "txtDNI";
             txtDNI.PlaceholderText = "DNI";
-            txtDNI.Size = new Size(186, 27);
+            txtDNI.Size = new Size(186, 23);
             txtDNI.TabIndex = 1;
             // 
             // txtArea
@@ -60,7 +64,7 @@
             txtArea.Location = new Point(521, 203);
             txtArea.Name = "txtArea";
             txtArea.PlaceholderText = "Área";
-            txtArea.Size = new Size(222, 27);
+            txtArea.Size = new Size(222, 23);
             txtArea.TabIndex = 2;
             // 
             // txtCargo
@@ -68,7 +72,7 @@
             txtCargo.Location = new Point(761, 203);
             txtCargo.Name = "txtCargo";
             txtCargo.PlaceholderText = "Cargo";
-            txtCargo.Size = new Size(252, 27);
+            txtCargo.Size = new Size(252, 23);
             txtCargo.TabIndex = 3;
             // 
             // txtCorreo
@@ -76,14 +80,14 @@
             txtCorreo.Location = new Point(1037, 203);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.PlaceholderText = "Correo";
-            txtCorreo.Size = new Size(254, 27);
+            txtCorreo.Size = new Size(254, 23);
             txtCorreo.TabIndex = 4;
             // 
             // dtpFecha
             // 
             dtpFecha.Location = new Point(12, 258);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(292, 27);
+            dtpFecha.Size = new Size(292, 23);
             dtpFecha.TabIndex = 5;
             // 
             // chkPresente
@@ -91,7 +95,7 @@
             chkPresente.AutoSize = true;
             chkPresente.Location = new Point(329, 261);
             chkPresente.Name = "chkPresente";
-            chkPresente.Size = new Size(87, 24);
+            chkPresente.Size = new Size(71, 19);
             chkPresente.TabIndex = 6;
             chkPresente.Text = "Presente";
             chkPresente.CheckedChanged += chkPresente_CheckedChanged;
@@ -101,7 +105,7 @@
             chkTarde.AutoSize = true;
             chkTarde.Location = new Point(432, 262);
             chkTarde.Name = "chkTarde";
-            chkTarde.Size = new Size(67, 24);
+            chkTarde.Size = new Size(54, 19);
             chkTarde.TabIndex = 7;
             chkTarde.Text = "Tarde";
             chkTarde.CheckedChanged += chkTarde_CheckedChanged;
@@ -146,7 +150,7 @@
             // 
             cmbFiltroNombre.Location = new Point(12, 307);
             cmbFiltroNombre.Name = "cmbFiltroNombre";
-            cmbFiltroNombre.Size = new Size(432, 28);
+            cmbFiltroNombre.Size = new Size(432, 23);
             cmbFiltroNombre.TabIndex = 12;
             cmbFiltroNombre.SelectedIndexChanged += cmbFiltroNombre_SelectedIndexChanged;
             // 
@@ -155,7 +159,7 @@
             chkSoloPresentes.AutoSize = true;
             chkSoloPresentes.Location = new Point(451, 307);
             chkSoloPresentes.Name = "chkSoloPresentes";
-            chkSoloPresentes.Size = new Size(128, 24);
+            chkSoloPresentes.Size = new Size(102, 19);
             chkSoloPresentes.TabIndex = 13;
             chkSoloPresentes.Text = "Solo presentes";
             chkSoloPresentes.CheckedChanged += chkSoloPresentes_CheckedChanged;
@@ -165,7 +169,7 @@
             chkSoloTarde.AutoSize = true;
             chkSoloTarde.Location = new Point(585, 307);
             chkSoloTarde.Name = "chkSoloTarde";
-            chkSoloTarde.Size = new Size(100, 24);
+            chkSoloTarde.Size = new Size(79, 19);
             chkSoloTarde.TabIndex = 14;
             chkSoloTarde.Text = "Solo tarde";
             chkSoloTarde.CheckedChanged += chkSoloTarde_CheckedChanged;
@@ -175,7 +179,7 @@
             chkSoloFaltaron.AutoSize = true;
             chkSoloFaltaron.Location = new Point(691, 307);
             chkSoloFaltaron.Name = "chkSoloFaltaron";
-            chkSoloFaltaron.Size = new Size(117, 24);
+            chkSoloFaltaron.Size = new Size(93, 19);
             chkSoloFaltaron.TabIndex = 15;
             chkSoloFaltaron.Text = "Solo faltaron";
             chkSoloFaltaron.CheckedChanged += chkSoloFaltaron_CheckedChanged;
@@ -183,13 +187,12 @@
             // dgvRegistros
             // 
             dgvRegistros.ColumnHeadersHeight = 29;
-            dgvRegistros.Location = new Point(68, 354);
+            dgvRegistros.Location = new Point(68, 383);
             dgvRegistros.Name = "dgvRegistros";
             dgvRegistros.RowHeadersWidth = 51;
-            dgvRegistros.Size = new Size(1223, 323);
+            dgvRegistros.Size = new Size(1223, 294);
             dgvRegistros.TabIndex = 16;
             dgvRegistros.SelectionChanged += dgvRegistros_SelectionChanged;
-            
             // 
             // lblTotal
             // 
@@ -229,11 +232,40 @@
             btnReporteCSV.UseVisualStyleBackColor = true;
             btnReporteCSV.Click += btnReporteCSV_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(451, 354);
+            label1.Name = "label1";
+            label1.Size = new Size(143, 15);
+            label1.TabIndex = 20;
+            label1.Text = "Buscar por DNI o Nombre";
+            // 
+            // txtBuscar
+            // 
+            txtBuscar.Location = new Point(600, 351);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(143, 23);
+            txtBuscar.TabIndex = 21;
+            txtBuscar.TextChanged += txtBuscar_TextChanged_1;
+            // 
+            // btnBorrar
+            // 
+            btnBorrar.Location = new Point(761, 350);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(89, 23);
+            btnBorrar.TabIndex = 22;
+            btnBorrar.Text = "Restablecer";
+            btnBorrar.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoSize = true;
             BackColor = SystemColors.Window;
             ClientSize = new Size(1329, 689);
+            Controls.Add(btnBorrar);
+            Controls.Add(txtBuscar);
+            Controls.Add(label1);
             Controls.Add(btnReporteTXT);
             Controls.Add(btnReporteCSV);
             Controls.Add(pictureBox2);
@@ -286,5 +318,9 @@
         private PictureBox pictureBox2;
         private System.Windows.Forms.Button btnReporteTXT;
         private System.Windows.Forms.Button btnReporteCSV;
+        private Label label1;
+        private TextBox txtBuscar;
+        private Button btnBorrar;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
