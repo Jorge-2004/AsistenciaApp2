@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using AsistenciaApp.models;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
+
 
 namespace AsistenciaApp.Forms
 {
@@ -25,6 +27,7 @@ namespace AsistenciaApp.Forms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
                 string.IsNullOrWhiteSpace(txtArea.Text) ||
@@ -49,8 +52,17 @@ namespace AsistenciaApp.Forms
 
 
             if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDNI.Text))
+=======
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+>>>>>>> jorge
             {
-                MessageBox.Show("Debe completar al menos el nombre y el DNI.");
+                MessageBox.Show("Ingrese nombre completos para mayor especificacion ".");
+                return;
+            }
+
+            if (txtDNI.Text.Length != 8 || !int.TryParse(txtDNI.Text, out _))
+            {
+                MessageBox.Show("El DNI debe tener exactamente 8 dígitos numéricos.");
                 return;
             }
 
@@ -74,7 +86,7 @@ namespace AsistenciaApp.Forms
         {
             if (selectedId == -1)
             {
-                MessageBox.Show("Seleccione un registro para modificar.");
+                MessageBox.Show("Seleccione un registro para modificar la caja de datos.");
                 return;
             }
 
@@ -100,7 +112,7 @@ namespace AsistenciaApp.Forms
         {
             if (selectedId == -1)
             {
-                MessageBox.Show("Seleccione un registro para eliminar.");
+                MessageBox.Show("Elimine un registro de la caja de datos.");
                 return;
             }
 
