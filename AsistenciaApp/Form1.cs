@@ -27,7 +27,7 @@ namespace AsistenciaApp.Forms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+            // Validación de campos vacíos
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
                 string.IsNullOrWhiteSpace(txtArea.Text) ||
@@ -35,6 +35,20 @@ namespace AsistenciaApp.Forms
                 string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
                 MessageBox.Show("Debe completar todos los campos antes de registrar.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validación de nombre
+            if (txtNombre.Text.Trim().Length < 3)
+            {
+                MessageBox.Show("Ingrese nombre completo para mayor especificación.", "Nombre inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Validación de DNI: solo números y 8 dígitos
+            if (txtDNI.Text.Length != 8 || !int.TryParse(txtDNI.Text, out _))
+            {
+                MessageBox.Show("El DNI debe tener exactamente 8 dígitos numéricos.", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -50,22 +64,7 @@ namespace AsistenciaApp.Forms
                 return;
             }
 
-
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtDNI.Text))
-=======
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
->>>>>>> jorge
-            {
-                MessageBox.Show("Ingrese nombre completos para mayor especificacion ".");
-                return;
-            }
-
-            if (txtDNI.Text.Length != 8 || !int.TryParse(txtDNI.Text, out _))
-            {
-                MessageBox.Show("El DNI debe tener exactamente 8 dígitos numéricos.");
-                return;
-            }
-
+            // Crear nuevo empleado
             var emp = new Empleados(
                 txtNombre.Text.Trim(),
                 dtpFecha.Value,
@@ -77,6 +76,7 @@ namespace AsistenciaApp.Forms
                 txtCorreo.Text.Trim()
             );
 
+            // Guardar y actualizar vista
             attendanceService.AddRecord(emp);
             ActualizarVista();
             LimpiarCampos();
