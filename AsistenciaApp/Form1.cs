@@ -29,7 +29,7 @@ namespace AsistenciaApp.Forms
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
-                MessageBox.Show("Debe ingresar el nombre.");
+                MessageBox.Show("Ingrese nombre completos para mayor especificacion ".");
                 return;
             }
 
