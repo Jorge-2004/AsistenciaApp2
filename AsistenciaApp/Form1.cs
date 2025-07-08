@@ -18,7 +18,7 @@ namespace AsistenciaApp.Forms
         {
             InitializeComponent();
             attendanceService = new AsistenciaServicio();
-
+            dgvRegistros.ReadOnly = true;
             dgvRegistros.AutoGenerateColumns = true;
             ActualizarVista();
         }
