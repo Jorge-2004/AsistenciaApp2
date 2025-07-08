@@ -35,6 +35,7 @@
             pictureBox2 = new PictureBox();
             btnReporteTXT = new Button();
             btnReporteCSV = new Button();
+            buttonResumenDiario = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvRegistros).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -189,7 +190,6 @@
             dgvRegistros.Size = new Size(1223, 323);
             dgvRegistros.TabIndex = 16;
             dgvRegistros.SelectionChanged += dgvRegistros_SelectionChanged;
-            
             // 
             // lblTotal
             // 
@@ -229,11 +229,22 @@
             btnReporteCSV.UseVisualStyleBackColor = true;
             btnReporteCSV.Click += btnReporteCSV_Click;
             // 
+            // buttonResumenDiario
+            // 
+            buttonResumenDiario.Location = new Point(1131, 694);
+            buttonResumenDiario.Name = "buttonResumenDiario";
+            buttonResumenDiario.Size = new Size(128, 29);
+            buttonResumenDiario.TabIndex = 20;
+            buttonResumenDiario.Text = "Resumen Diario";
+            buttonResumenDiario.UseVisualStyleBackColor = true;
+            buttonResumenDiario.Click += buttonResumenDiario_Click;
+            // 
             // MainForm
             // 
             AutoSize = true;
             BackColor = SystemColors.Window;
-            ClientSize = new Size(1329, 689);
+            ClientSize = new Size(1329, 735);
+            Controls.Add(buttonResumenDiario);
             Controls.Add(btnReporteTXT);
             Controls.Add(btnReporteCSV);
             Controls.Add(pictureBox2);
@@ -264,7 +275,6 @@
             PerformLayout();
         }
 
-
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.TextBox txtArea;
@@ -286,5 +296,6 @@
         private PictureBox pictureBox2;
         private System.Windows.Forms.Button btnReporteTXT;
         private System.Windows.Forms.Button btnReporteCSV;
+        private Button buttonResumenDiario;
     }
 }
