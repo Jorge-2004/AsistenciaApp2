@@ -19,9 +19,10 @@ namespace AsistenciaApp.models
         public string Area { get; set; }
         public string Position { get; set; }
         public string Email { get; set; }
+        public string Observaciones { get; set; }
 
         public Empleados(string name, DateTime date, bool present, bool late,
-                        string dni, string area, string position, string email)
+                        string dni, string area, string position, string email, string observaciones)
         {
             Id = _idCounter++;
             Name = name;

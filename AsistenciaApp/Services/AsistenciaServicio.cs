@@ -45,5 +45,10 @@ namespace AsistenciaApp.Services
         {
             return employees.ToList();
         }
+
+        internal static object ObtenerRegistros()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
